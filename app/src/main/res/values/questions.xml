@@ -1,0 +1,6 @@
+<resources>
+    <string name = "question_1">This is a Demo First Question</string>
+    <string name = "question_2">This is a Demo Second Question</string>
+    <string name = "question_3">This is a Demo Third Question</string>
+    <string name = "question_4">This is a Demo Fourth Question</string>
+</resources>
