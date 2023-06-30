@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "intro_prompt" >Welcome to the NDT is Existing Learning App</string>
+    <string name = "button_prompt" >Next</string>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.ndt_is_exciting_app
+package com.example.ndt_is_exciting_app.question
 
 import android.content.Context
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ndt_is_exciting_app.R
 
 class MCQRecycler (private val context: Context ,private val mcqSize : Int) :
 RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
@@ -27,7 +28,7 @@ RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
         val layoutParams = view.findViewById<CardView>(R.id.multiple_choice_bar).layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.width = cardWidth
         layoutParams.height = cardHeight
-        layoutParams.setMargins(Margin_Size,Margin_Size,Margin_Size,Margin_Size)
+        layoutParams.setMargins(Margin_Size, Margin_Size, Margin_Size, Margin_Size)
 
         return ViewHolder(view)
     }
@@ -42,6 +43,7 @@ RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
         private val mcqOption = itemView.findViewById<ImageView>(R.id.imageView3)
 
         fun bind(position: Int) {
+
             //mcqOption.setImageResource()
             mcqOption.setOnClickListener{
                 Log.i( TAG , "Clicked on position $position")

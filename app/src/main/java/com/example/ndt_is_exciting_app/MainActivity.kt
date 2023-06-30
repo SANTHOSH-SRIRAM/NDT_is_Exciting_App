@@ -1,39 +1,27 @@
 package com.example.ndt_is_exciting_app
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ndt_is_exciting_app.ui.theme.NDT_is_Exciting_AppTheme
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.example.ndt_is_exciting_app.resourses.isFirstTime
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var mcqRecycler: RecyclerView
-
+//    private lateinit var mcqRecycler: RecyclerView
+//    private val mcqSize = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.question_layout)
+        setContentView(R.layout.activity_main)
 
-
-        mcqRecycler = findViewById<RecyclerView>(R.id.mcq_holder)
-        mcqRecycler.adapter = MCQRecycler(this,4)
-        mcqRecycler.setHasFixedSize(true)
-        mcqRecycler.layoutManager = LinearLayoutManager(this)
-        R.
-        //R.layout.mcq_options_card
-        //R.layout.opening
+//        mcqRecycler = findViewById(R.id.mcq_holder)
+//        mcqRecycler.adapter = MCQRecycler(this,mcqSize)
+//        mcqRecycler.setHasFixedSize(true)
+//        mcqRecycler.layoutManager = LinearLayoutManager(this)
     }
 }
 
