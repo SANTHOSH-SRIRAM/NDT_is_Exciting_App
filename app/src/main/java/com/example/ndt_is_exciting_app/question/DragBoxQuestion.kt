@@ -9,12 +9,13 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import com.example.ndt_is_exciting_app.R
-import com.example.ndt_is_exciting_app.gl_surface_view.MyGLSurfaceView
+import com.example.ndt_is_exciting_app.dragBoxQuestionTag
+import com.example.ndt_is_exciting_app.openGLPackageTag
+import com.example.ndt_is_exciting_app.open_gl_interface.MyGLSurfaceView
 import kotlin.math.abs
 
 
 class DragBoxQuestion : ComponentActivity() {
-
     private lateinit var imageQuestion : ImageView
     private lateinit var frameLayout : FrameLayout
     private lateinit var glSurface : MyGLSurfaceView
@@ -38,58 +39,58 @@ class DragBoxQuestion : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drag_box_question)
-
+        Log.i(dragBoxQuestionTag,"onCreate in DragBox Question")
         frameLayout = findViewById(R.id.dragBoxHolder)
         imageQuestion = findViewById(R.id.dragBoxImage)
         glSurface = MyGLSurfaceView(this)
         frameLayout.addView(glSurface)
 
 
-        imageQuestion.setOnTouchListener{
-                _, event ->
-            val x = event.x.toInt()
-            val y = event.y.toInt()
-            Log.i(Position, "$x,$y")
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    startPos = mutableListOf(x,y)
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    endPos = mutableListOf(x, y)
-
-                    selectionBoxes.add(mutableListOf(startPos,endPos))
-
-//                    val imageView1 = selectionBoxes.last()
-//                    layoutParams = imageView1.layoutParams as ViewGroup.MarginLayoutParams
-//                    layoutParams.height = getHeight()
-//                    layoutParams.width = getWidth()
+//        imageQuestion.setOnTouchListener{
+//                _, event ->
+//            val x = event.x.toInt()
+//            val y = event.y.toInt()
+//            Log.i(Position, "$x,$y")
+//            when (event.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    startPos = mutableListOf(x,y)
+//                }
+//                MotionEvent.ACTION_MOVE -> {
+//                    endPos = mutableListOf(x, y)
 //
-//                    imageView1.maxHeight = getHeight()
-//                    imageView1.maxWidth = getWidth()
-
-//                    layoutParams.setMargins(startPos[0], startPos[1], 0, 0)
-                }
-                MotionEvent.ACTION_UP -> {
-                    if (isMinBoxDimensions(startPos,endPos)){
-                        //delete Box
-                        TODO()
-                        //selectionBoxes[-1]. remove from layout
-                        selectionBoxes.removeLast()
-                    }
+//                    selectionBoxes.add(mutableListOf(startPos,endPos))
 //
-//                    //clean up
-//                    startPos = emptyList()
-//                    endPos = emptyList()
+////                    val imageView1 = selectionBoxes.last()
+////                    layoutParams = imageView1.layoutParams as ViewGroup.MarginLayoutParams
+////                    layoutParams.height = getHeight()
+////                    layoutParams.width = getWidth()
+////
+////                    imageView1.maxHeight = getHeight()
+////                    imageView1.maxWidth = getWidth()
 //
-                  }
-            }
-                    //add selection box to the layout
-            Log.i(selectionBox,"Selection Box Created : " + selectionBoxes.size.toString())
-
-
-
-            true
-        }
+////                    layoutParams.setMargins(startPos[0], startPos[1], 0, 0)
+//                }
+//                MotionEvent.ACTION_UP -> {
+//                    if (isMinBoxDimensions(startPos,endPos)){
+//                        //delete Box
+//                        TODO()
+//                        //selectionBoxes[-1]. remove from layout
+//                        selectionBoxes.removeLast()
+//                    }
+////
+////                    //clean up
+////                    startPos = emptyList()
+////                    endPos = emptyList()
+////
+//                  }
+//            }
+//                    //add selection box to the layout
+//            Log.i(selectionBox,"Selection Box Created : " + selectionBoxes.size.toString())
+//
+//
+//
+//            true
+//        }
 
     }
 

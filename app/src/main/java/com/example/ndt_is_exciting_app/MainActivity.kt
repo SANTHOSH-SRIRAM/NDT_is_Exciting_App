@@ -1,27 +1,25 @@
 package com.example.ndt_is_exciting_app
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ndt_is_exciting_app.resourses.isFirstTime
+import com.example.ndt_is_exciting_app.directory.directory
 
 class MainActivity : ComponentActivity() {
 
-//    private lateinit var mcqRecycler: RecyclerView
-//    private val mcqSize = 4
+    private lateinit var topicRecycler: RecyclerView
+    private val noOfTopics = directory.size
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        mcqRecycler = findViewById(R.id.mcq_holder)
-//        mcqRecycler.adapter = MCQRecycler(this,mcqSize)
-//        mcqRecycler.setHasFixedSize(true)
-//        mcqRecycler.layoutManager = LinearLayoutManager(this)
+        topicRecycler = findViewById(R.id.TopicRecyclerView)
+        topicRecycler.adapter = TopicRecycler(this,noOfTopics)
+        topicRecycler.setHasFixedSize(true)
+        topicRecycler.layoutManager = LinearLayoutManager(this)
     }
 }
 

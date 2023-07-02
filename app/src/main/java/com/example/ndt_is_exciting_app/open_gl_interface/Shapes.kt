@@ -1,12 +1,13 @@
-package com.example.ndt_is_exciting_app.gl_surface_view
+package com.example.ndt_is_exciting_app.open_gl_interface
 
 import android.opengl.GLES20
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
 import java.nio.ShortBuffer
+import kotlin.properties.Delegates
 
-open class Shapes (shapeCoords: FloatArray,Coords){
+open class Shapes() {
     private val vertexShaderCode =
         "attribute vec4 vPosition;" +
                 "void main() {" +
@@ -24,14 +25,18 @@ open class Shapes (shapeCoords: FloatArray,Coords){
     private var positionHandle: Int = 0
 
     private var mColorHandle: Int = 0
-    private var COORDS_PER_VERTEX = 0
+    private var COORDS_PER_VERTEX = 3
+    private var shapeCoords = mutableListOf<Any>()
     private lateinit var vertexBuffer: FloatBuffer
 
-    private val vertexCount: Int = shapeCoords.size / COORDS_PER_VERTEX
-    private val vertexStride: Int = COORDS_PER_VERTEX * 4 // 4 bytes per vertex
+    private var vertexCount = 0
+    private var vertexStride = 0
 
 
     init {
+        vertexCount = shapeCoords.size / COORDS_PER_VERTEX
+        vertexStride = COORDS_PER_VERTEX * 4 // 4 bytes per vertex
+
         val vertexShader: Int = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
         val fragmentShader: Int = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode)
 
@@ -88,7 +93,7 @@ open class Shapes (shapeCoords: FloatArray,Coords){
 }
 
 
-class Triangle(private val shapeCoords : FloatArray) : Shapes(shapeCoords){
+class Triangle(shapeCoords : FloatArray) : Shapes(){
 
     // Set color with red, green, blue and alpha (opacity) values
     private val color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)
@@ -115,7 +120,7 @@ class Triangle(private val shapeCoords : FloatArray) : Shapes(shapeCoords){
 
 }
 
-class Square( private val shapeCoords : FloatArray) : Shapes(shapeCoords) {
+class Quadrilateral(shapeCoords : FloatArray) : Shapes() {
 
     private val drawOrder = shortArrayOf(0, 1, 2, 0, 2, 3) // order to draw vertices
     private val color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)

@@ -1,4 +1,4 @@
-package com.example.ndt_is_exciting_app.resourses
+package com.example.ndt_is_exciting_app.resources
 
 import com.example.ndt_is_exciting_app.R
 
