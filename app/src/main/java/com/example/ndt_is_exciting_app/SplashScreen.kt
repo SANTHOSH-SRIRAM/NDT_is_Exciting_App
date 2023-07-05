@@ -6,7 +6,10 @@ import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
-import com.example.ndt_is_exciting_app.question.DragBoxQuestion
+import com.example.ndt_is_exciting_app.directory_layout.MainActivity
+import java.util.Timer
+import kotlin.concurrent.schedule
+import kotlin.system.exitProcess
 
 class SplashScreen : ComponentActivity() {
 
@@ -18,7 +21,14 @@ class SplashScreen : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        chooseActivity()
+        Timer().schedule(2000){
+
+            //calls this function after delay
+            chooseActivity()
+
+            exitProcess(1)
+        }
+
 //      TODO: Create Delay
     }
 
@@ -26,13 +36,15 @@ class SplashScreen : ComponentActivity() {
         sf = getSharedPreferences("my_sf", MODE_PRIVATE)
         editor = sf.edit()
 
-        //if(sf.getBoolean("isFirstTime",true)){
-            startActivity(Intent(this@SplashScreen, SignInMenu::class.java))
-            editor.apply{
-                putBoolean("isFirstTime",false)
-                commit()
-            }
-       // }//else {
+
+        Log.i("dbug SplashScreen","in Choose Activity")
+//        if(sf.getBoolean("isFirstTime",true)){
+        startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+        editor.apply{
+            putBoolean("isFirstTime",false)
+            commit()
+        }
+//        }else {
 //            startActivity(Intent(this@SplashScreen, DragBoxQuestion::class.java))
 //        }
     }

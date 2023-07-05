@@ -1,10 +1,10 @@
 package com.example.ndt_is_exciting_app
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import com.example.ndt_is_exciting_app.directory_layout.MainActivity
 
 class SignInMenu : ComponentActivity() {
     
