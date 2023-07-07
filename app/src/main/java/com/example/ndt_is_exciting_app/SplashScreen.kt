@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import com.example.ndt_is_exciting_app.directory_layout.MainActivity
+import com.example.ndt_is_exciting_app.question.DragBoxQuestion
 import java.util.Timer
 import kotlin.concurrent.schedule
 import kotlin.system.exitProcess
@@ -39,7 +40,7 @@ class SplashScreen : ComponentActivity() {
 
         Log.i("dbug SplashScreen","in Choose Activity")
 //        if(sf.getBoolean("isFirstTime",true)){
-        startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+        startActivity(Intent(this@SplashScreen, DragBoxQuestion::class.java))
         editor.apply{
             putBoolean("isFirstTime",false)
             commit()
