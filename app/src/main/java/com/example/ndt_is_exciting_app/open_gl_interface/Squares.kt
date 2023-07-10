@@ -60,7 +60,7 @@ open class Squares (private var squareCoords :FloatArray = squareCoords_) {
         val vertexShader: Int = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
         val fragmentShader: Int = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode)
 
-        evaluteVertexBuffer()
+        evaluateVertexBuffer()
 
         // create empty OpenGL ES Program
         mProgram = GLES20.glCreateProgram().also {
@@ -79,14 +79,14 @@ open class Squares (private var squareCoords :FloatArray = squareCoords_) {
 
     fun setSquareCoords(squareCoords: FloatArray){
         this.squareCoords = squareCoords
-        evaluteVertexBuffer()
+        evaluateVertexBuffer()
     }
 
     fun SetColor(Red : Float,Blue : Float,Green : Float,Alpha : Float){
         color = floatArrayOf(Red,Blue,Green,Alpha)
     }
 
-    private fun evaluteVertexBuffer(){
+    private fun evaluateVertexBuffer(){
 
         vertexBuffer =
                 // (# of coordinate values * 4 bytes per float)
