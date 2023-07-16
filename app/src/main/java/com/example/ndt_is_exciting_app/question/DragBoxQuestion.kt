@@ -3,15 +3,18 @@ package com.example.ndt_is_exciting_app.question
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.ndt_is_exciting_app.R
 import com.example.ndt_is_exciting_app.dragBoxQuestionTag
-import com.example.ndt_is_exciting_app.openGLPackageTag
 import com.example.ndt_is_exciting_app.open_gl_interface.MyGLSurfaceView
+import com.example.ndt_is_exciting_app.resources.checkAnsHollowRect
+import com.example.ndt_is_exciting_app.resources.checkAnsPoint
+import com.example.ndt_is_exciting_app.resources.setShapeColors
 import kotlin.math.abs
 
 
@@ -19,6 +22,7 @@ class DragBoxQuestion : ComponentActivity() {
     private lateinit var imageQuestion : ImageView
     private lateinit var frameLayout : FrameLayout
     private lateinit var glSurface : MyGLSurfaceView
+    private lateinit var button : Button
 
     private lateinit var startPos : MutableList<Int>
     private lateinit var endPos : MutableList<Int>
@@ -42,8 +46,25 @@ class DragBoxQuestion : ComponentActivity() {
         Log.i(dragBoxQuestionTag,"onCreate in DragBox Question")
         frameLayout = findViewById(R.id.dragBoxHolder)
         imageQuestion = findViewById(R.id.dragBoxImage)
+        button = findViewById(R.id.check_answer_button)
+
         glSurface = MyGLSurfaceView(this)
         frameLayout.addView(glSurface)
+
+        button.setOnClickListener{
+            var ansBufferPoint = checkAnsPoint()
+            var ansBufferHollowRect = checkAnsHollowRect()
+
+            var pointString = "["
+            ansBufferPoint.forEach{pointString += "$it," }
+            pointString += "]"
+            var hollowRectString = "["
+            ansBufferHollowRect.forEach{hollowRectString += "$it," }
+            hollowRectString += "]"
+            Toast.makeText(this,pointString,Toast.LENGTH_SHORT).show()
+
+            setShapeColors(glSurface,"Point")
+        }
 
 
 //        imageQuestion.setOnTouchListener{

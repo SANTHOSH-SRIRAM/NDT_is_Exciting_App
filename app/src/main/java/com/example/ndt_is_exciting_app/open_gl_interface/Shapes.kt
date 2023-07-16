@@ -7,7 +7,7 @@ import java.nio.FloatBuffer
 import java.nio.ShortBuffer
 import kotlin.properties.Delegates
 
-open class Shapes() {
+open class Shapes {
     private val vertexShaderCode =
         "attribute vec4 vPosition;" +
                 "void main() {" +

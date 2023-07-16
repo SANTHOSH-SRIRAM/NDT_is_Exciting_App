@@ -7,15 +7,7 @@ import java.nio.FloatBuffer
 import java.nio.ShortBuffer
 
 
-
-var squareCoords_ = floatArrayOf(
-    -0.5f,  0.5f, 0.0f,      // top left
-    -0.5f, -0.5f, 0.0f,      // bottom left
-    0.5f, -0.5f, 0.0f,      // bottom right
-    0.5f,  0.5f, 0.0f       // top right
-)
-
-open class Squares (private var squareCoords :FloatArray = squareCoords_) {
+class Squares (private var squareCoords :FloatArray = floatArrayOf()) {
     private lateinit var vertexBuffer: FloatBuffer
     private lateinit var drawListBuffer: ShortBuffer
 
@@ -59,6 +51,15 @@ open class Squares (private var squareCoords :FloatArray = squareCoords_) {
     init {
         val vertexShader: Int = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
         val fragmentShader: Int = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode)
+
+        if (squareCoords.size == 0){
+        squareCoords = floatArrayOf(
+            -0.5f,  0.5f, 0.0f,      // top left
+            -0.5f, -0.5f, 0.0f,      // bottom left
+            0.5f, -0.5f, 0.0f,      // bottom right
+            0.5f,  0.5f, 0.0f       // top right
+        )
+        }
 
         evaluateVertexBuffer()
 
@@ -145,8 +146,7 @@ open class Squares (private var squareCoords :FloatArray = squareCoords_) {
             // Pass the projection and view transformation to the shader
             GLES20.glUniformMatrix4fv(vPMatrixHandle, 1, false, mvpMatrix, 0)
 
-
-            // Draw the triangle
+            // Draw the two triangle
             GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, vertexCount)
 
             // Disable vertex array

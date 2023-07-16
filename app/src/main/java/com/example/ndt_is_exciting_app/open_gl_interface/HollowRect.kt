@@ -2,14 +2,9 @@ package com.example.ndt_is_exciting_app.open_gl_interface
 
 import android.util.Log
 
-var squareCoords = floatArrayOf(
-    -0.5f,  0.5f, 0.0f,      // top left
-    -0.5f, -0.5f, 0.0f,      // bottom left
-    0.5f, -0.5f, 0.0f,      // bottom right
-    0.5f,  0.5f, 0.0f       // top right
-)
 
-class HollowRect (private var squareCoordinates : FloatArray = squareCoords){
+
+class HollowRect (private var squareCoords : FloatArray = floatArrayOf()){
 
     private lateinit var topLine : ConstantThicknessLines
     private lateinit var bottomLine : ConstantThicknessLines
@@ -21,11 +16,19 @@ class HollowRect (private var squareCoordinates : FloatArray = squareCoords){
     }
 
     init{
+        if (squareCoords.size == 0) {
+            squareCoords = floatArrayOf(
+                -0.5f, 0.5f, 0.0f,      // top left
+                -0.5f, -0.5f, 0.0f,      // bottom left
+                0.5f, -0.5f, 0.0f,      // bottom right
+                0.5f, 0.5f, 0.0f       // top right
+            )
+        }
         createConstantThicknessLines()
     }
 
     private fun createConstantThicknessLines(){
-        var coords = squareCoordinates
+        var coords = squareCoords
 
         var topCoords = coords.sliceArray(0..5)
         var rightCoords = coords.sliceArray(3..8)
@@ -48,7 +51,7 @@ class HollowRect (private var squareCoordinates : FloatArray = squareCoords){
         x3 : Float,y3 : Float,z3 : Float,
         x4 : Float,y4 : Float,z4 : Float
     ){
-        this.squareCoordinates = floatArrayOf(
+        this.squareCoords = floatArrayOf(
             x1,y1,z1,
             x2,y2,z2,
             x3,y3,z3,
@@ -62,5 +65,11 @@ class HollowRect (private var squareCoordinates : FloatArray = squareCoords){
         this.rightLine.draw(vPMatrix)
         this.bottomLine.draw(vPMatrix)
         this.leftLine.draw(vPMatrix)
+    }
+
+    fun getCorners(): MutableList<MutableList<Float>> {
+        var corner1 = mutableListOf( squareCoords[0],squareCoords[1] )
+        var corner2 = mutableListOf( squareCoords[6],squareCoords[7] )
+        return mutableListOf(corner1,corner2)
     }
 }

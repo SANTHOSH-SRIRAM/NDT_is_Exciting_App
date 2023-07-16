@@ -25,7 +25,7 @@ class TopicLayout : ComponentActivity() {
         setContentView(R.layout.activity_topic_layout)
         Log.i(TAG,"in OnCreate")
 
-        var _intent = getIntent()
+        var _intent = intent
         var topicName = _intent.getStringExtra("Topic")
         noOfSubTopics = directory[topicName]?.size ?:
         Log.i(TAG,"after receiving Intent")

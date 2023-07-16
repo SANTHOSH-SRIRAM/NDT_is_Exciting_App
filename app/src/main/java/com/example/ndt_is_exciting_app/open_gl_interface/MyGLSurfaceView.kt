@@ -10,6 +10,7 @@ import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener
 import androidx.core.view.GestureDetectorCompat
 import com.example.ndt_is_exciting_app.openGLPackageTag
 import com.example.ndt_is_exciting_app.resources.createNewShape
+import com.example.ndt_is_exciting_app.resources.reset_all
 import com.example.ndt_is_exciting_app.resources.translate
 import com.example.ndt_is_exciting_app.resources.zoom
 import kotlin.math.max
@@ -31,6 +32,8 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
     private lateinit var endPos: MutableList<Float>
 
     private var longPressActive = false
+    private var options = listOf("PointSelect","DragBoxSelect")
+    private var questionType = "PointSelect"
 
 
     companion object {
@@ -44,13 +47,14 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
 
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2)
-
+        reset_all()
         mDetector = GestureDetectorCompat(context, MyGestureListener(this))
         mScaleGestureDetector = ScaleGestureDetector(context, ScaleListener(this))
 
 
+
         Log.i(openGLPackageTag, "init of My Surface View")
-        renderer = MyGLRenderer()
+        renderer = MyGLRenderer(this.context)
         Log.i(openGLPackageTag, "init of My Surface View")
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(renderer)
@@ -67,7 +71,7 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
         val y: Float = e.y
 
         mDetector.onTouchEvent(e)
-        var scale = mScaleGestureDetector.onTouchEvent(e);
+        var scale = mScaleGestureDetector.onTouchEvent(e)
 
 
 
@@ -90,7 +94,11 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
             MotionEvent.ACTION_UP -> {
                 if (longPressActive){
                     endPos = mutableListOf(e.x,e.y)
-                    createNewShape("HollowRect",startPos,endPos)
+                    if (questionType == "DragBoxSelect"){
+                        createNewShape("HollowRect",startPos,endPos)
+                    }else if(questionType =="PointSelect"){
+                        createNewShape("Point",endPos)
+                    }
                     requestRender()
                     longPressActive = false
                 }

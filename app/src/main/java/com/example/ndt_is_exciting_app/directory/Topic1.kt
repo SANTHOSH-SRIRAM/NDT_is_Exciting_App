@@ -9,13 +9,11 @@ private var subTopics1_Questions = mapOf(
     1 to QuestionFormat(
         "Question1",
         "This is a Place Holder Question",
-        "MCQ",
+        "DragBoxQuestion",
         4,
         listOf(
-            "answer1",
-            "answer2",
-            "answer3",
-            "answer4")
+            mutableListOf(mutableListOf(0.5,0.3), mutableListOf(0.4,0.2))
+        )
     ).map,
     2 to QuestionFormat(
         "Question2",

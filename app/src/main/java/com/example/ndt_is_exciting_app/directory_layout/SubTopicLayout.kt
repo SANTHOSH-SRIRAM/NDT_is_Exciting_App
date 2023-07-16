@@ -23,7 +23,7 @@ class SubTopicLayout : ComponentActivity() {
         setContentView(R.layout.activity_sub_topic_layout)
         Log.i(TAG,"in OnCreate")
 
-        var _intent = getIntent()
+        var _intent = intent
         var topicName = _intent.getStringExtra("Topic")
         var subTopicName = _intent.getStringExtra("SubTopic")
 

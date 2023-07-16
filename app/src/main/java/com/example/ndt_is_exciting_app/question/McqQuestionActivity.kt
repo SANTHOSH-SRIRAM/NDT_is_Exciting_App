@@ -24,7 +24,7 @@ class McqQuestionActivity : ComponentActivity() {
         setContentView(R.layout.mcq_question_layout)
         Log.i(TAG,"On Create")
 
-        val _intent = getIntent()
+        val _intent = intent
         val topicName = _intent.getStringExtra("Topic")
         val subTopicName = _intent.getStringExtra("SubTopic")
         val questionNo = _intent.getIntExtra("QuestionNo",-1)
