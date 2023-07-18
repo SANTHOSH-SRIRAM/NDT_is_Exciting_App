@@ -32,7 +32,7 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
     private lateinit var endPos: MutableList<Float>
 
     private var longPressActive = false
-    private var options = listOf("PointSelect","DragBoxSelect")
+    private var options = listOf("PointSelect","DragBoxSelect" )
     private var questionType = "PointSelect"
 
 
