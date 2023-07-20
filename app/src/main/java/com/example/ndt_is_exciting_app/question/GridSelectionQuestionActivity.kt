@@ -11,9 +11,14 @@ import com.example.ndt_is_exciting_app.resources.GridSize
 
 class GridSelectionQuestionActivity : ComponentActivity() {
 
+
     private lateinit var gridSelectionRecycler: RecyclerView
     private var gridSize : GridSize = GridSize.HARD
     private var Size : Int = gridSize.gridSize
+
+
+    var answerLog = IntArray(Size)
+    var correctAnswer = IntArray(Size)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +27,13 @@ class GridSelectionQuestionActivity : ComponentActivity() {
 
         Log.i("dbug GridSelectionQuestion","in onCreate")
 
+        var _intent = intent
+        var topicName = _intent.getStringExtra("Topic").toString()
+        var subTopicName = _intent.getStringExtra("SubTopic").toString()
+        var questionNo = _intent.getStringExtra("QuestionNo").toString()
+
         gridSelectionRecycler = findViewById(R.id.grid_selection_recycler)
-        gridSelectionRecycler.adapter = GridSelectionAdapter(this , Size,gridSize)
+        gridSelectionRecycler.adapter = GridSelectionAdapter(this,Size,gridSize,topicName,subTopicName,questionNo)
         gridSelectionRecycler.setHasFixedSize(true)
         gridSelectionRecycler.layoutManager = GridLayoutManager(this,gridSize.getWidth())
     }

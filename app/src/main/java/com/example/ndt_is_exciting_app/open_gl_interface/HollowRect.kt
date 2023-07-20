@@ -11,6 +11,7 @@ class HollowRect (private var squareCoords : FloatArray = floatArrayOf()){
     private lateinit var rightLine : ConstantThicknessLines
     private lateinit var leftLine : ConstantThicknessLines
 
+    var objectVaribles = listOf(topLine,leftLine,bottomLine,rightLine)
     companion object {
         private const val TAG = "dbug hollowRect"
     }
@@ -61,15 +62,16 @@ class HollowRect (private var squareCoords : FloatArray = floatArrayOf()){
     }
 
     fun draw(vPMatrix : FloatArray){
-        this.topLine.draw(vPMatrix)
-        this.rightLine.draw(vPMatrix)
-        this.bottomLine.draw(vPMatrix)
-        this.leftLine.draw(vPMatrix)
+        objectVaribles.forEach{it.draw(vPMatrix)}
     }
 
     fun getCorners(): MutableList<MutableList<Float>> {
         var corner1 = mutableListOf( squareCoords[0],squareCoords[1] )
         var corner2 = mutableListOf( squareCoords[6],squareCoords[7] )
         return mutableListOf(corner1,corner2)
+    }
+
+    fun setColor(color: FloatArray) {
+        objectVaribles.forEach { it.setColor(color) }
     }
 }

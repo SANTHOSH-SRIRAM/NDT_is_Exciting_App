@@ -1,11 +1,13 @@
 package com.example.ndt_is_exciting_app.directory
 
+import com.example.ndt_is_exciting_app.R
 import com.example.ndt_is_exciting_app.resources.QuestionFormat
 
 
 //this can be a list or map according to if Question Description is Required
 
-private var subTopics1_Questions = mapOf(
+private var X_ray_Questions = mapOf(
+    0 to X_Ray_topic,
     1 to QuestionFormat(
         "Question1",
         "This is a Place Holder Question",
@@ -18,13 +20,26 @@ private var subTopics1_Questions = mapOf(
     2 to QuestionFormat(
         "Question2",
         "This is a Place Holder Question",
-        "MCQ",
+        "GridSelection",
         4,
         listOf(
-            "answer1",
-            "answer2",
-            "answer3",
-            "answer4")
+            R.drawable.fish_tessalate,
+            R.drawable.default_background,
+            R.drawable.blank_fill_in,
+            R.drawable.app_icon_your_company,
+            R.drawable.fish_tessalate,
+            R.drawable.default_background,
+            R.drawable.blank_fill_in,
+            R.drawable.app_icon_your_company,
+            R.drawable.fish_tessalate,
+            R.drawable.default_background,
+            R.drawable.blank_fill_in,
+            R.drawable.app_icon_your_company,
+            R.drawable.fish_tessalate,
+            R.drawable.default_background,
+            R.drawable.blank_fill_in,
+            R.drawable.app_icon_your_company
+        )
     ).map,
     3 to QuestionFormat(
         "Question3",
@@ -193,7 +208,7 @@ private var subTopics4_Questions = mapOf(
 
 
 var subTopics1 = mapOf(
-    "subTopic1" to subTopics1_Questions,
+    "subTopic1" to X_ray_Questions,
     "subTopic2" to subTopics2_Questions,
     "subTopic3" to subTopics3_Questions,
     "subTopic4" to subTopics4_Questions,

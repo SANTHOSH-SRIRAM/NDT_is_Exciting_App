@@ -62,7 +62,7 @@ class ConstantThicknessLines( private var lineCoords : FloatArray = _lineCoords 
         scaledDirection = normal.scaled(thicknessLines)
         Log.i(TAG,"scaled , ScaledNormal${scaledNormal.contentToString()} , Normal${scaledDirection.contentToString()}")
 
-        var squareCoords = floatArrayOf(
+        squareCoords = floatArrayOf(
             lineCoords[0] + scaledNormal[0]  , lineCoords[1] + scaledNormal[1] , lineCoords[2],
             lineCoords[3] + scaledNormal[0]  , lineCoords[4] + scaledNormal[1] , lineCoords[5],
             lineCoords[3] - scaledNormal[0]  , lineCoords[4] - scaledNormal[1] , lineCoords[5],
@@ -98,6 +98,10 @@ class ConstantThicknessLines( private var lineCoords : FloatArray = _lineCoords 
 
     fun draw(vPMatrix:FloatArray){
         square.draw(vPMatrix)
+    }
+
+    fun setColor(color: FloatArray) {
+        square.color = color
     }
 }
 

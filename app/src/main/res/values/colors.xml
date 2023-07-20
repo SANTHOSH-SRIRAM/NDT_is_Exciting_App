@@ -14,4 +14,6 @@
     <color name="selected_background">#ffaa3f</color>
     <color name="default_background">#3d3d3d</color>
     <color name="transparent_background">#00000000</color>
+    <color name="ripple_color_light">#FF0000</color>
+    <color name="background">#00FFFFFF</color>
 </resources>

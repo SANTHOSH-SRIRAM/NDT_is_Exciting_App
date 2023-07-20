@@ -3,6 +3,7 @@ package com.example.ndt_is_exciting_app.directory_layout
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ndt_is_exciting_app.R
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         Log.i(TAG,"in OnCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.i(TAG,"after content set")
         val topics = mutableListOf<String>()
         directory.forEach{ entry -> topics.add(entry.key)}
         Log.i(TAG,"after assigning the Topic List")

@@ -79,6 +79,6 @@ RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
     }
 }
 
-private fun ImageView.setImageResource(any: Any?) {
+fun ImageView.setImageResource(any: Any?) {
 
 }

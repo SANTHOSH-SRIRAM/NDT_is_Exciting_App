@@ -35,7 +35,7 @@ class TopicLayout : ComponentActivity() {
         Log.i(TAG,"after assigning the Topic List")
 
         subTopicRecycler = findViewById(R.id.sub_topics)
-        mainTextView = findViewById(R.id.sub_topics_main_image)
+        mainTextView = findViewById(R.id.topicsTextView)
 
         mainTextView.text = topicName
 

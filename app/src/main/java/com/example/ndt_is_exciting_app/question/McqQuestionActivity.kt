@@ -24,6 +24,8 @@ class McqQuestionActivity : ComponentActivity() {
         setContentView(R.layout.mcq_question_layout)
         Log.i(TAG,"On Create")
 
+        //Decode the Extra's in Intent
+
         val _intent = intent
         val topicName = _intent.getStringExtra("Topic")
         val subTopicName = _intent.getStringExtra("SubTopic")
@@ -31,11 +33,15 @@ class McqQuestionActivity : ComponentActivity() {
 
         Log.i(TAG,"after Intent")
 
+        //Decode the Directory Information
+
         var currentDirectory = (((directory[topicName] as Map<String,Map<Int,Map<Any,Any>>>)
                 [subTopicName] as Map<Int,Map<Any,Any>>)[questionNo] as Map<Any, Any>)
         var currentAnswer = currentDirectory["_CorrectAnswer"]
         var noOfQuestions = currentDirectory["_no Of Options"] as Int
         Log.i(TAG,"after current Directory")
+
+        //set the basic data in the Layout
 
         mcqRecycler = findViewById(R.id.mcq_holder)
         questionView = findViewById(R.id.mcq_question_view)

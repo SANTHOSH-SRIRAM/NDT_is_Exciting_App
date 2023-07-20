@@ -56,8 +56,8 @@ class SubTopicRecycler(private val context: Context, private val noOfSubTopics :
             sub_topics_image.setOnClickListener{
                 Log.i( TAG , "Clicked on position $position")
 
-                context.startActivity(Intent(context, SubTopicLayout::class.java)
-                    .putExtra("SubTopic",subTopicName).putExtra("Topic",topic))
+                context.startActivity(Intent(context, ComponentHeader::class.java)
+                    .putExtra("Topic",topic).putExtra("SubTopic",subTopicName))
             }
         }
     }

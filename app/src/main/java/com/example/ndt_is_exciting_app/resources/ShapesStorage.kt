@@ -202,7 +202,20 @@ fun setShapeColors(View : MyGLSurfaceView, type :String){
             }
         }
         "HollowRect"-> {
-
+            checkAnsHollowRect()
+            for(i in 0 until shapeHollowRectBuffer.size){
+                var ansBuffer = shapeHollowRectBuffer[i]
+                var point = shapesHollowRect[i]
+                var color: FloatArray
+                if (ansBuffer == 2){
+                    color = floatArrayOf(0.0f,0.0f,1.0f,1.0f)
+                }else if(ansBuffer == 1){
+                    color = floatArrayOf(0.0f,1.0f,1.0f,1.0f)
+                }else{
+                    color = floatArrayOf(1.0f,0.0f,0.0f,1.0f)
+                }
+                point.setColor(color)
+            }
         }
     }
     View.requestRender()

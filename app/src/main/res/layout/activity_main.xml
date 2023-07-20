@@ -21,6 +21,13 @@
             android:padding="10dp"
             app:srcCompat="@drawable/ic_launcher_background"
             tools:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/SubTopicsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TextView" />
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView

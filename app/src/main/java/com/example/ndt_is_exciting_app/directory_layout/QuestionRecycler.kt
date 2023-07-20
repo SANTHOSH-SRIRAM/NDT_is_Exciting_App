@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ndt_is_exciting_app.R
 import com.example.ndt_is_exciting_app.directory.directory
+import com.example.ndt_is_exciting_app.question.DragBoxQuestion
 import com.example.ndt_is_exciting_app.question.GridSelectionQuestionActivity
 import com.example.ndt_is_exciting_app.question.McqQuestionActivity
 
@@ -67,28 +68,44 @@ class QuestionRecycler(
             }
         }
 
-        fun chooseQuestion(questionType : String?){
+        fun chooseQuestion(questionType : String?) : Boolean{
+            var classQuestion : Class<*>
+            var type = ""
             when (questionType) {
                 "MCQ" -> {
-                    context.startActivity(
-                        Intent(context, McqQuestionActivity::class.java)
-                            .putExtra("SubTopic",subTopicName)
-                            .putExtra("Topic",topicName)
-                            .putExtra("QuestionNo", position +1)
-                    )
+                    classQuestion = McqQuestionActivity::class.java
                 }
+
                 "GridSelection" -> {
-                    context.startActivity(
-                        Intent(context, GridSelectionQuestionActivity::class.java)
-                            .putExtra("SubTopic",subTopicName)
-                            .putExtra("Topic",topicName)
-                            .putExtra("QuestionNo",position+1)
-                    )
+                    classQuestion = GridSelectionQuestionActivity::class.java
                 }
+
+                "DragBoxSelect" -> {
+                    classQuestion = DragBoxQuestion::class.java
+                    type = "DragBoxSelect"
+                }
+
+                "PointSelect" ->{
+                    classQuestion = DragBoxQuestion::class.java
+                    type = "PointSelect"
+                }
+
                 else -> {
-                    var pass = 0
+                    return false
                 }
             }
+
+            var Intent = Intent(context, classQuestion)
+                .putExtra("SubTopic",subTopicName)
+                .putExtra("Topic",topicName)
+                .putExtra("QuestionNo", position +1)
+
+            if (type != ""){
+                Intent.putExtra("Type",type)
+            }
+
+            context.startActivity(Intent)
+            return true
         }
     }
 }

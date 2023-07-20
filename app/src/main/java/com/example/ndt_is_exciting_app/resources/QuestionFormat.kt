@@ -11,7 +11,7 @@ data class QuestionFormat(
 
     val map : MutableMap<Any,Any> = mutableMapOf(
         "_name" to questionName,
-        "_Question" to "question PLace Holder",
+        "_Question" to Question,
         "_QuestionType" to questionType,
         "_no Of Options" to noOfOptions,
         "_CorrectAnswer" to correctAnswer,
