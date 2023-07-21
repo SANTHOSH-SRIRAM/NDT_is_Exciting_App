@@ -13,17 +13,20 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ndt_is_exciting_app.R
+import com.example.ndt_is_exciting_app.directory.directory
 
 class MCQRecycler(
     private val context: Context,
     private val mcqSize: Int,
-    private val currentDirectory: Map<Any, Any>,
-    private val correctAnswer : Int
+    private val topicName : String,
+    private val subTopicName : String,
+    private val questionNo : Int
 ) :
 RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
 
     private lateinit var option_typeing : String
-
+    private var currentDirectory = directory[topicName]?.get(subTopicName)?.get(questionNo)
+    private val correctAnswer = currentDirectory?.get("_CorrectAnswer")
 
     companion object{
         const val Margin_Size = 20
@@ -63,7 +66,7 @@ RecyclerView.Adapter<MCQRecycler.ViewHolder>() {
             val activity = this.itemView.context as Activity
 
             mcqOptionText.visibility = View.VISIBLE
-            mcqOptionText.text = currentDirectory[position+1] as String
+            mcqOptionText.text = currentDirectory?.get(position+1) as String
             Log.i( TAG , "after assigning Text")
             //mcqOption.setImageResource()
             itemView.setOnClickListener{

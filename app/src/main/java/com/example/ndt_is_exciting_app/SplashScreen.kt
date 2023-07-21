@@ -27,7 +27,7 @@ class SplashScreen : ComponentActivity() {
         Log.i(TAG,"SplashScreen onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+        startActivity(Intent(this@SplashScreen, SignInMenu::class.java))
 //        chooseActivity()
 //        Timer().schedule(2000){
 //

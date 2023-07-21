@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1074362921522",
+    "project_id": "ndt-is-exciting",
+    "storage_bucket": "ndt-is-exciting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074362921522:android:a9434125b300ed3be6422b",
+        "android_client_info": {
+          "package_name": "com.example.ndt_is_exciting_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074362921522-51pobio2thdnjuomirblb3oe82f7ipc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnapFE4GB9T1hbNGsSXhmQAhLIvXPsEKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074362921522-51pobio2thdnjuomirblb3oe82f7ipc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

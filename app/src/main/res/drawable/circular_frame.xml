@@ -7,14 +7,14 @@
             android:shape="rectangle">
             <stroke
                 android:width="3.0dp"
-                android:color="#A4EA8B" />
-            <corners android:radius="10dp" />
+                android:color="#141513" />
+            <corners android:radius="300dp" />
         </shape>
     </item>
 
     <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
-            <corners android:radius="10dp" />
+            <corners android:radius="300dp" />
             <solid android:color="@color/background" />
         </shape>
     </item>

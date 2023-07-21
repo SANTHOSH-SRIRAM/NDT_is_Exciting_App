@@ -27,18 +27,17 @@ class McqQuestionActivity : ComponentActivity() {
         //Decode the Extra's in Intent
 
         val _intent = intent
-        val topicName = _intent.getStringExtra("Topic")
-        val subTopicName = _intent.getStringExtra("SubTopic")
+        val topicName = _intent.getStringExtra("Topic").toString()
+        val subTopicName = _intent.getStringExtra("SubTopic").toString()
         val questionNo = _intent.getIntExtra("QuestionNo",-1)
 
         Log.i(TAG,"after Intent")
 
         //Decode the Directory Information
 
-        var currentDirectory = (((directory[topicName] as Map<String,Map<Int,Map<Any,Any>>>)
-                [subTopicName] as Map<Int,Map<Any,Any>>)[questionNo] as Map<Any, Any>)
-        var currentAnswer = currentDirectory["_CorrectAnswer"]
-        var noOfQuestions = currentDirectory["_no Of Options"] as Int
+        var currentDirectory = directory[topicName]?.get(subTopicName)?.get(questionNo)
+        var currentAnswer = currentDirectory?.get("_CorrectAnswer") as String
+        var noOfQuestions = currentDirectory?.get("_no Of Options") as Int
         Log.i(TAG,"after current Directory")
 
         //set the basic data in the Layout
@@ -51,8 +50,7 @@ class McqQuestionActivity : ComponentActivity() {
         mcqRecycler.adapter = MCQRecycler(
                 this,
                 noOfQuestions,
-                currentDirectory,
-                currentAnswer as Int
+                topicName,subTopicName,questionNo
         )
         mcqRecycler.setHasFixedSize(true)
         mcqRecycler.layoutManager = LinearLayoutManager(this)
