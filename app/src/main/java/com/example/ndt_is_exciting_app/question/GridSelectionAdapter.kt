@@ -20,12 +20,12 @@ class GridSelectionAdapter(private val context: Context,
                            private val gridSize: GridSize,
                            private var topicName : String,
                            private var subTopicName : String,
-                           private var questionNo: String
+                           private var questionNo: Int
 ) :
     RecyclerView.Adapter<GridSelectionAdapter.ViewHolder>() {
 
 
-    var currentDirectory = (directory[topicName]?.get(subTopicName))?.get(questionNo.toInt())
+    var currentDirectory = (directory[topicName]?.get(subTopicName))?.get(questionNo)
 
     companion object{
         const val Margin_Size = 10
@@ -44,8 +44,8 @@ class GridSelectionAdapter(private val context: Context,
         val minLength = min(cardWidth,cardHeight)
 
         val layoutParams = view.findViewById<CardView>(R.id.gridSelectOption).layoutParams as ViewGroup.MarginLayoutParams
-        layoutParams.width = minLength
-        layoutParams.height = minLength
+        layoutParams.width = cardWidth
+        layoutParams.height = cardHeight
         layoutParams.setMargins(Margin_Size, Margin_Size, Margin_Size, Margin_Size)
 
         return ViewHolder(view)
@@ -64,9 +64,10 @@ class GridSelectionAdapter(private val context: Context,
         private val selectOutline = context.getDrawable(R.drawable.bg_roundrect_ripple_light_border)
         fun bind(position: Int) {
             var ansResource = currentDirectory?.get(position + 1)
-            if( ansResource is Int ){
-                var imageResource : Drawable? = context.getDrawable(ansResource)
-                gridSelectImage.setImageResource(imageResource)
+            if( ansResource is R.drawable ){
+                var imageResource = context.getDrawable(R.drawable.blank_fill_in)
+                gridSelectImage.setImageResource(currentDirectory?.get(position + 1))
+//                gridSelectImage.setImageDrawable()
                 gridSelectImage.visibility = View.VISIBLE
             }else if(ansResource is String){
                 gridSelectText.text = ansResource;
